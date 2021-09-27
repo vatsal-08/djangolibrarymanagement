@@ -6,7 +6,9 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     no_of_pages = models.IntegerField()
     available = models.IntegerField()
-    description = models.TextField()
+    desc = models.TextField()
 
+    class Meta:
+        ordering=['title']
     def __str__(self):
         return self.title
