@@ -13,14 +13,17 @@ class BookListView(ListView):
 
 class BookDetailView(DetailView):
     model = Book
+    template_name = 'templates/book_detail.html'
 
 
 class BookUpdateView(LoginRequiredMixin, UpdateView):
     model = Book
     login_url = '/login'
+    field = ["available", "desc"]
 
 
 class BookDeleteView(LoginRequiredMixin, DeleteView):
     model = Book
+    login_url = '/login'
     template_name = 'templates/delete_post.html'
     success_url = reverse_lazy('book-list')
