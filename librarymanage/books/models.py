@@ -9,6 +9,17 @@ class Book(models.Model):
     desc = models.TextField()
 
     class Meta:
-        ordering=['title']
+        ordering = ['title']
+
     def __str__(self):
         return self.title
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    books = models.ManyToManyField(Book)
+    about = models.TextField()
+    photo = models.ImageField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
